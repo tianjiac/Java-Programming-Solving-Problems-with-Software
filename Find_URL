@@ -1,0 +1,31 @@
+/**
+ * Read the lines from the file at this URL location, 
+ * "http://www.dukelearntoprogram.com/course2/data/manylinks.html", 
+ * and prints each URL on the page that is a link to youtube.com.
+ * 
+ * @author Tianjia Chen
+ */
+ 
+import edu.duke.*;
+import java.io.*;
+
+public class findurl {
+        public void youtubeurl() {
+    URLResource data = new URLResource("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
+    for (String line: data.lines()) {
+        String line_original = line;
+        line = line.toLowerCase();
+    	int start = line.indexOf("\"");
+    	if (start != -1) {
+    	   int stop = line.indexOf("\"", start+1);
+    	   if (stop != -1) {
+    	       String line1 = line.substring(start+1, stop);
+    	       int in = line1.indexOf("youtube.com");
+    	       if (in != -1) {
+    	           System.out.println(line_original.substring(start+1, stop));
+    	       }
+    	   }
+    	}
+    }
+    }
+}
