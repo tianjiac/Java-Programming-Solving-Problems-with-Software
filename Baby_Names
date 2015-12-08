@@ -41,7 +41,7 @@ public class BabyBirths {
     
     public void testtotalBirths() {
         FileResource fr = new FileResource();
-        CSVParser parser = fr.getCSVParser();
+        CSVParser parser = fr.getCSVParser(false);
         totalBirths(parser);
     }
     
@@ -55,7 +55,7 @@ public class BabyBirths {
  public int getRank(int year, String name, String gender) {
         String na = "yob" + year + "short.csv";
         FileResource fr = new FileResource(na);
-        CSVParser parser = fr.getCSVParser();
+        CSVParser parser = fr.getCSVParser(false);
         int rank = 0;
         int number = 0;
         for (CSVRecord record : parser) {
@@ -86,7 +86,7 @@ public class BabyBirths {
  public String getName(int year, int rank, String gender) {
         String na = "yob" + year + "short.csv";
         FileResource fr = new FileResource(na);
-        CSVParser parser = fr.getCSVParser();
+        CSVParser parser = fr.getCSVParser(false);
         int number = 0;
         int find = 0;
         String finalname = null;
@@ -120,11 +120,11 @@ public class BabyBirths {
  public void whatisNameInYear(String name, int year, int newyear, String gender) {
         String nameyear = "yob" + year + "short.csv";
         FileResource fr = new FileResource(nameyear);
-        CSVParser parserold = fr.getCSVParser();
+        CSVParser parserold = fr.getCSVParser(false);
         
         String namenewyear = "yob" + newyear + "short.csv";
         FileResource fr1 = new FileResource(namenewyear);
-        CSVParser parsernew = fr1.getCSVParser();
+        CSVParser parsernew = fr1.getCSVParser(false);
         
         int rank = 0;
         int find = 0;
@@ -177,7 +177,7 @@ public class BabyBirths {
             int find = 0;
             String fname = f.getName();
             FileResource fr = new FileResource(fname);
-            CSVParser parser = fr.getCSVParser();
+            CSVParser parser = fr.getCSVParser(false);
             for (CSVRecord record: parser) {
                 if (record.get(1).equals(gender)) {
                     rank += 1;
@@ -220,7 +220,7 @@ public class BabyBirths {
             int find = 0;
             String fname = f.getName();
             FileResource fr = new FileResource(fname);
-            CSVParser parser = fr.getCSVParser();
+            CSVParser parser = fr.getCSVParser(false);
             for (CSVRecord record: parser) {
                 if (record.get(1).equals(gender)) {
                     rank += 1;
@@ -256,7 +256,7 @@ public class BabyBirths {
  public int getTotalBirthsRankedHigher(int year, String name, String gender) {
         String nameyear = "yob" + year + "short.csv";
         FileResource fr = new FileResource(nameyear);
-        CSVParser parser = fr.getCSVParser();
+        CSVParser parser = fr.getCSVParser(false);
         int find = 0;
         int sum = 0;
         for (CSVRecord record: parser) {
